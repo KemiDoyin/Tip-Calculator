@@ -18,29 +18,36 @@
       <div class="calc_interface">
         <form>
           <div class="form_input">
-            <label for="bill">Bill</label>
-            <input type="number" name="bill" id="bill" placeholder="0" min="0">
+            <div class="calc_label">
+              <label for="bill">Bill</label>
+              <p class="error bill_error" onchange="showError()">djj</p>
+            </div>
+            <input name="bill" id="bill" placeholder="0">
             <span><img src="images/icon-dollar.svg" alt="dollar icon"></span>
           </div>
-          <span class="error"></span>
           <div class="form_input">
-            <label for="tip">Select Tip %</label>
+            <div class="calc_label">
+              <label for="tip">Select Tip %</label>
+              <span class="error tip_error" onchange="showError()"></span>
+            </div>
             <div class="tip">
               <button class="tip_button">5%</button>
               <button class="tip_button">10%</button>
               <button class="tip_button">15%</button>
               <button class="tip_button">25%</button>
               <button class="tip_button">50%</button>
-            <input type="number" name="tip" id="tip" placeholder="Custom" min="0">
+            <input  name="tip" id="tip" placeholder="Custom">
             </div>
           </div>
-          <span class="error"></span>
           <div class="form_input">
-            <label for="total_persons">Number of People</label>
-            <input type="number" name="total_persons" id="total_persons" placeholder="0" min="0">
+            <div class="calc_label">
+              <label for="total_persons">Number of People</label>
+              <span class="error total_person_error" onchange="showError()">yy</span>
+            </div>
+            <input name="total_persons" id="total_persons" placeholder="0">
             <span><img src="images/icon-person.svg" alt="dollar icon"></span>
           </div>
-          <span class="error"></span>
+         
         </form>
       </div>
       <div class="calc_total_display">
