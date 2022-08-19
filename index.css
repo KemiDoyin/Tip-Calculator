@@ -38,8 +38,9 @@ h1 {
     display: flex;
 }
 .calc_interface {
-    width: 50%;
-    padding-right: 15px;
+    width: 500px;
+    /* flex: 0 1 50%; */
+    padding-right: 45px;
 }
 input {
     font-family: inherit;
@@ -143,13 +144,17 @@ h2 {
 .error {
     color: rgb(245, 90, 90);
     text-align: end;
-    display: block;
-    position: relative;
-    top: -67px;
+    /* display: block; */
+    /* position: relative; */
+    /* top: -67px; */
     
 }
 .error:nth-of-type(2) {
     top: -10px;
+}
+.calc_label {
+    display: flex;
+    justify-content: space-between;
 }
 input:focus {
     border: 2px solid var(--Strong-cyan);
@@ -159,6 +164,7 @@ input:focus {
 input:invalid{
     border: 2px solid rgb(245, 90, 90);
 }
+
 .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
 
