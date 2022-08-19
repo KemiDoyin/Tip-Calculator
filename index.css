@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+:root {
+    --Very-dark-cyan: hsl(183, 100%, 15%);
+    --Dark-grayish-cyan: hsl(186, 14%, 43%);
+    --Grayish-cyan: hsl(184, 14%, 56%);
+    --Light-grayish-cyan: hsl(185, 41%, 84%);
+    --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --White: hsl(0, 0%, 100%);
+    --Strong-cyan: hsl(172, 67%, 45%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Space Mono', monospace;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--Light-grayish-cyan);
+}
+.calculator_box {
+    background-color: var(--White);
+    border-radius: 12px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+input {
+    font-family: inherit;
+    text-align: right;
+    width: 100%;
+    background-color: var(--Very-light-grayish-cyan);
+    border: none;
+}
+input::placeholder {
+    color: var(--Very-dark-cyan);
+}
+.bill_input {
+    position: relative;
+    display: block;
+}
+.dollar {
+    position: absolute;
+    left: 1px;
+    top: 4px;
+}
+.box_2 {
+    background-color: var(--Very-dark-cyan);
+    border-radius: 12px;
+}
+.label_1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+.tip {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    row-gap: 10px;
+    /* grid-template-rows: 50px 50px 50px; */
+    /* grid-row: 3; */
+}
+.select_tip button {
+    font-family: inherit;
+    background-color: var(--Very-dark-cyan);
+    border: none;
+    color: var(--White);
+    padding: 10px;
+    width: 90%;
+    border-radius: 5px;
+}
+.select_tip input {
+    width: 90%;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background-color: aqua;
+}
+.attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
