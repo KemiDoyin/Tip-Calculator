@@ -13,59 +13,51 @@
 </head>
 <body>
   <main>
+    <h1>spli <br>tter</h1>
     <div class="calculator_box">
-      <div class="box_1">
+      <div class="calc_interface">
         <form>
-          <label for="bill">Bill</label>
-          <div class="bill_input">
+          <div class="form_input">
+            <label for="bill">Bill</label>
             <input type="number" name="bill" id="bill" placeholder="0" min="0">
-          <span class="dollar"><img src="images/icon-dollar.svg" alt=""></span>
+            <span><img src="images/icon-dollar.svg" alt="dollar icon"></span>
           </div>
+          <span class="error"></span>
+          <div class="form_input">
+            <label for="tip">Select Tip %</label>
+            <div class="tip">
+              <button class="tip_button">5%</button>
+              <button class="tip_button">10%</button>
+              <button class="tip_button">15%</button>
+              <button class="tip_button">25%</button>
+              <button class="tip_button">50%</button>
+            <input type="number" name="tip" id="tip" placeholder="Custom" min="0">
+            </div>
+          </div>
+          <span class="error"></span>
+          <div class="form_input">
+            <label for="total_persons">Number of People</label>
+            <input type="number" name="total_persons" id="total_persons" placeholder="0" min="0">
+            <span><img src="images/icon-person.svg" alt="dollar icon"></span>
+          </div>
+          <span class="error"></span>
         </form>
-          <form class="select_tip">
-          <label for="tip">Select Tip %</label>
-          <div class="tip">
-            <button>5%</button>
-          <button>10%</button>
-          <button>15%</button>
-          <button>25%</button>
-          <button>50%</button>
-          <input type="number" name="tip" id="tip" placeholder="Custom" min="0">
-          </div>
-          </form>
       </div>
-      <div class="box_2">
-        <div class="label_1">
-          <p>Tip Amount <br><span>/ person</span></p>
-          <p>$0.00</p>
+      <div class="calc_total_display">
+        <div class="tip_display">
+          <h2>Tip Amount <br><span>/ person</span></h2>
+          <p class="tip_amount">$0.00</p>
         </div>
-        <div class="label_2">
-          <p>Tip Amount <br><span>/ person</span></p>
-          <p>$0.00</p>
+        <div class="tip_display">
+          <h2>Total <br><span>/ person</span></h2>
+          <p class="total_amount">$0.00</p>
         </div>
+        <button type="reset">Reset</button>
       </div>
     </div>
   </main>
 
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
+  
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
