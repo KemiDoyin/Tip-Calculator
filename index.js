@@ -10,66 +10,17 @@ const totalPersonError = document.querySelector('.total_person_error')
 const billError = document.querySelector('.bill_error')
 const tipError = document.querySelector('.tip_error')
 const warning = document.querySelector('.warning')
-// const {total_person_error, bill_error, tip_error} = errors;
-// const inputNum = document.getElementsByTagName(');
+ customs = document.querySelector('customs')
 
-// const regExes = {
-//     dot: /^\.$/g,
-//     zero: /^0\d+/g,
-//     num: /[^0-9\.]+/g,
-//     people: /[^0-9]+/g,
-//     letter: /[a-zA-Z,/<>\?;':""[\]\\{}\|`~!@#\$%\^&\*()_=\+]+/g,
-//   };
-
-//   const testExp = (reg, val) => new RegExp(reg).test(val)
-
-// function showError() {
-//     if (totalPersons.value < 1 || bill.value < 1 ) {
-//         totalPersonError.textContent = 'Invalid'
-//         billError.textContent = 'Invalid'
-//         tipError.textContent = 'Invalid'
-//     totalPersons.classList.add('invalid')
-//     } 
-    
-//     // if (totalPersons.value === 0){
-//     //     totalPersonError.textContent = 'cant be zero'
-//     //     totalPersons.classList.add('error')
-//     // }
-//     else if (bill.value === '0' || totalPersons.value === '0' || tip.value === '0') {
-//         billError.textContent = 'cant be zero'
-//         tipError.textContent = 'cant be zero'
-//         totalPersonError.textContent = 'cant be zero'
-//     }
-//     // else if (!errors) {
-//     //     errors.classList.remove('error')
-//     // }
-//     else  {
-//         totalPersonError.textContent = '';
-//         // calc()
-//         errors.classList.remove('error')
-//     }
-
-// }
-
-
-// const validInput = (e) => {
-//     const value = e.target.value;
-//     if (value === 0){
-//         totalPersonError.textContent = 'Invalid'
-//         billError.textContent = 'Invalid'
-//         tipError.textContent = 'Invalid'
-//     }
-// }
-// const calc = () => {
-//     if (warning.classList.contains('error')) {
-//         warning.classList.remove('error')
-//     }
-// }
+var tipy = 0;
 const displayError = function(e, msg) {
     e.target.classList.add('error')
   e.target.previousElementSibling.lastElementChild.textContent = msg;
 }
-
+const customError = function (e, msg) {
+    e.target.classList.add('error')
+  e.target.previousElementSibling.lastElementChild.textContent = msg;
+}
 const removeError = function (e) {
     e.target.classList.remove('error')
     e.target.previousElementSibling.lastElementChild.textContent = '';
@@ -96,46 +47,53 @@ inputS.forEach(inputs => {
         display()
     })
 })
+const customInput = function (e) {
+    const value = e.target.value
+    if (value === '0') {
+        customError(e, "Can't be zero")
+        e.target.classList.add('error')
+    }
+    else if (isNaN(value)) {
+        customError(e, 'invalid')
+    }
+    else if (value < 0) {
+        customError(e, 'positive only')
+    }
+    else if (value.includes('.') && e.target.name === 'total_persons') {
+        customError(e, 'error')
+    }
+    else {
+        removeError(e)
+    }
+    display()
+}
+
+
+tipButton.forEach(tipButton => {
+    tipButton.addEventListener('click', (e) => {
+        tipy = e.target.value
+        display()
+    })
+})
 
 const display = () => {
     const billInput = bill.value;
-    const tipInput = tip.value;
     const totalPeople = totalPersons.value;
-    const totalPerPerson = billInput + totalPeople
-    const tipAmountPerPerson = '';
-    totalAmount.textContent = totalPerPerson;
+     const totalTip = billInput * (tipy /100)
+     const amount =  (billInput * ((tipy/100) +1))
+    tipAmount.textContent = 
+    totalTip.toFixed(1)
+    totalAmount.textContent =
+    amount.toFixed(1);
+    if (totalPeople > 1) {
+        totalAmount.textContent = 
+        (amount / totalPeople).toFixed(2)
+        tipAmount.textContent = 
+        (totalTip / totalPeople).toFixed(2)
+    }
+    
+    
+    
 }
 
-// const input = function(e) {
-//     const value = e.target.value;
-//     if (value === '0') {
-//         errors.textContent = "cant be zero";
-//     }
-//     else if (value > 10 && e.target.name === 'bill') {
-//         billError.textContent = 'lol'
-//     }
-// }
-// function showError() {
-//     if (bill.value === '0') {
-//         billError.textContent = 'Can"t be zero'
-//         bill.classList.add('error')
-//     }
-//     else if (isNaN(bill.value)) {
-//         billError.textContent = 'Invalid'
-//         bill.classList.add('error')
-//     }
-// }
-// totalPersons.addEventListener('input',(e) => {
-//     // showError();
-//    input(e)
-// })
-// bill.addEventListener('input',(e) => 
-//     // showError();
-//     // input(e)
-    
 
-// )
-// tip.addEventListener('input',(e) => {
-//     // showError();
-//     input(e);
-// })
