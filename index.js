@@ -10,8 +10,8 @@ const totalPersonError = document.querySelector('.total_person_error')
 const billError = document.querySelector('.bill_error')
 const tipError = document.querySelector('.tip_error')
 const warning = document.querySelector('.warning')
- customs = document.querySelector('customs')
-
+ const customs = document.querySelector('customs')
+const reset = document.querySelector('.reset')
 var tipy = 0;
 const displayError = function(e, msg) {
     e.target.classList.add('error')
@@ -19,7 +19,12 @@ const displayError = function(e, msg) {
 }
 const customError = function (e, msg) {
     e.target.classList.add('error')
-  e.target.previousElementSibling.lastElementChild.textContent = msg;
+//   e.target.parentNode.firstChild.lastChild.textContent = msg;
+e.target.parentElement.previousSibling.textContent = msg; 
+}
+const removeCustomError = function (e) {
+    e.target.classList.add('error')
+  e.target.parentElement.previousSibling.textContent = '';   
 }
 const removeError = function (e) {
     e.target.classList.remove('error')
@@ -44,10 +49,12 @@ inputS.forEach(inputs => {
         else {
             removeError(e)
         }
+        
         display()
     })
 })
-const customInput = function (e) {
+
+const getCustomInput = function (e) {
     const value = e.target.value
     if (value === '0') {
         customError(e, "Can't be zero")
@@ -63,11 +70,14 @@ const customInput = function (e) {
         customError(e, 'error')
     }
     else {
-        removeError(e)
-    }
+        tipy = value;
     display()
+        removeCustomError(e)
+    }
+    
+    
 }
-
+tip.addEventListener('input', getCustomInput)
 
 tipButton.forEach(tipButton => {
     tipButton.addEventListener('click', (e) => {
@@ -95,5 +105,12 @@ const display = () => {
     
     
 }
+reset.addEventListener('click', () => {
+    tipAmount.textContent = `$0.00`;
+    totalAmount.textContent = `$0.00`;
+    inputS.forEach((e) => {
+        e.value = ''
+    })
+})
 
 
