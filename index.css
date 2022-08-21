@@ -33,8 +33,8 @@ h1 {
 .calculator_box {
     background-color: var(--White);
     border-radius: 12px;
-    width: 100%;
-    padding: 20px;
+    /* width: 100%; */
+    padding: 25px;
     display: flex;
 }
 .calc_interface {
@@ -50,6 +50,7 @@ input {
     padding: 6px;
     border-radius: 8px;
     font-size: 20px;
+    color: var(--Very-dark-cyan);
 }
 input::placeholder {
     color: var(--Very-dark-cyan);
@@ -74,7 +75,7 @@ label {
 .calc_total_display {
     background-color: var(--Very-dark-cyan);
     border-radius: 12px;
-    width: 50%;
+    width: 400px;
     /* text-align: center; */
 }
 .tip_display {
@@ -101,17 +102,21 @@ h2 {
     width: 90%;
     padding: 8px;
     border-radius: 5px;
-    background-color: var(--Strong-cyan);
+    background-color: #26c0ab;
     border: none;
     color: var(--Very-dark-cyan);
     text-transform: uppercase;
     position: relative;
     left: 15px;
     margin-top: 53px;
+    opacity: 0.2;
     /* right: 0; */
     /* margin: 0 auto; */
 }
-
+.calc_total_display button:hover {
+    background-color: var(--Light-grayish-cyan);
+    opacity: 1;
+}
 .tip {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
@@ -132,13 +137,25 @@ h2 {
     border-radius: 5px;
     font-size: 17px;
 }
+.tip button:hover {
+    background-color: var(--Light-grayish-cyan);
+    color: var(--Very-dark-cyan);
+}
+.tip button.active {
+    background-color: var(--Strong-cyan);
+    color: var(--Very-dark-cyan);
+}
 .tip input {
     width: 90%;
     border-radius: 5px;
     padding: 10px;
     border: none;
-    background-color: aqua;
+    color: var(--Very-dark-cyan);
+    background-color: var(--Very-light-grayish-cyan);
     font-size: 15px;
+}
+.tip input::placeholder {
+    color: var(--Dark-grayish-cyan);
 }
 .error {
     color: rgb(245, 90, 90);
