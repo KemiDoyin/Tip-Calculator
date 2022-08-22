@@ -32,9 +32,8 @@ tip calculator ..
 ![calculator](images/calc1.jpg)
 when active ..
 ![calculator](images/calcactive.jpg)
-input errors ..
-![calculator](images/calcerror.jpg)
-
+input error ..
+![calculator](images/calcerror1.jpg)
 
 ### Links
 
