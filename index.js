@@ -26,9 +26,6 @@ const removeCustomError = function (e) {
     e.target.classList.remove('error')
     e.target.parentElement.previousSibling.textContent = '';
     e.target.style.border = 'none';
-  errors.forEach(err => {
-    err.textContent = ''
-})   
 }
 const removeError = function (e) {
     e.target.classList.remove('error')
@@ -52,7 +49,7 @@ inputS.forEach(inputs => {
             displayError(e, 'positive only')
         }
         else if (value.includes('.') && e.target.name === 'total_persons') {
-            displayError(e, 'error')
+            displayError(e, "Can't be decimal")
         }
         else {
             removeError(e)
@@ -61,12 +58,7 @@ inputS.forEach(inputs => {
         display()
     })
 })
-// const clear = function (e) {
-//     // const value = e.target.value
-//     if (isNaN(e)) {
-//         totalAmount.textContent = `error`
-//     }
-// }
+
 function Error() {
     const notValue = totalPersons.value
     const notValue2 = bill.value
@@ -92,9 +84,6 @@ const getCustomInput = function (e) {
     }
     else if (value < 0) {
         customError(e, 'positive only')
-    }
-    else if (value.includes('.') && e.target.name === 'total_persons') {
-        customError(e, 'error')
     }
     else {
         tipy = value;
@@ -127,9 +116,9 @@ const display = () => {
      const totalTip = billInput * (tipy /100)
      const amount =  (billInput * ((tipy/100) +1))
     tipAmount.textContent = 
-    `$${totalTip.toFixed(1)}`
+    `$${totalTip.toFixed(2)}`
     totalAmount.textContent =
-    `$${amount.toFixed(1)}`;
+    `$${amount.toFixed(2)}`;
     if (totalPeople > 1) {
         totalAmount.textContent = 
         `$${(amount / totalPeople).toFixed(2)}`
@@ -156,8 +145,9 @@ reset.addEventListener('click', (e) => {
     inputS.forEach(input => {
         input.style.border = 'none'
     })
-    // removeCustomError(e)
-    // errors.textContent = '';
+    tip.style.border = 'none'
+    removeCustomError(e)
+    
 })
 
 
