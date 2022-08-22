@@ -19,16 +19,17 @@
 body {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     font-family: 'Space Mono', monospace;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: var(--Light-grayish-cyan);
 }
-h1 {
-    text-align: center;
-    text-transform: uppercase;
+.logo {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 50px;
+    
 }
 .calculator_box {
     background-color: var(--White);
@@ -36,6 +37,7 @@ h1 {
     /* width: 100%; */
     padding: 25px;
     display: flex;
+    margin-bottom: 32px;
 }
 .calc_interface {
     width: 50%;
@@ -111,21 +113,20 @@ h2 {
     left: 15px;
     margin-top: 53px;
     opacity: 0.2;
-    /* right: 0; */
-    /* margin: 0 auto; */
 }
 .calc_total_display button:hover {
     background-color: var(--Light-grayish-cyan);
     opacity: 1;
+}
+.calc_total_display button.btn-active {
+     background-color: var(--Strong-cyan);
+     color: var(--Very-dark-cyan);
 }
 .tip {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
     grid-template-rows: 35px 35px;
     row-gap: 10px;
-    /* column-gap: 1px; */
-    /* grid-template-rows: 50px 50px 50px; */
-    /* grid-row: 3; */
 }
 .tip button {
     font-family: inherit;
@@ -162,9 +163,6 @@ h2 {
     color: rgb(245, 90, 90);
     
 }
-/* .error:nth-of-type(2) {
-    color: red
-} */
 .calc_label {
     display: flex;
     justify-content: space-between;
@@ -175,20 +173,31 @@ input:focus  {
     outline: none;
     
 }
-
-
-
 .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
 
 @media (max-width:768px) {
+    .logo {
+        margin-top: 10%;
+    }
     .calculator_box {
         display: block;
+        margin-top: 20px;
     }
     .calc_interface {
         width: 100%;
     }
     .calc_total_display {
         width: 100%;
+        padding: 12px;
+        margin-top: 23px;
+    }
+    .tip {
+        grid-template-columns: 50% 50%;
+    }
+}
+@media (max-width: 360px), (max-width: 375px) {
+    .logo {
+        margin-top: 60%;
     }
 }
