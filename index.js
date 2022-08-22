@@ -8,7 +8,7 @@ const errors = document.querySelectorAll('.error')
 const inputS = document.querySelectorAll('.inputs_')
  const customs = document.querySelector('customs')
 const reset = document.querySelector('.reset')
-var tipy = 0;
+let tipy = 0;
 
 
 const displayError = function(e, msg) {
@@ -16,15 +16,12 @@ const displayError = function(e, msg) {
   e.target.previousElementSibling.lastElementChild.textContent = msg;
   e.target.style.border = '1px solid rgb(245, 90, 90)'
 }
-const customError = function (e, msg) {
-    e.target.classList.add('error')
-    // e.target.previousElementSibling.lastElementChild.textContent = msg;
-    e.target.parentElement.previousSibling.textContent = msg;
+const customError = function (e) {
+    e.target.style.color = 'rgb(245, 90, 90)'
     e.target.style.border = '1px solid rgb(245, 90, 90)';
 }
 const removeCustomError = function (e) {
-    e.target.classList.remove('error')
-    e.target.parentElement.previousSibling.textContent = '';
+    e.target.style.color = 'var(--Very-dark-cyan)'
     e.target.style.border = 'none';
 }
 const removeError = function (e) {
@@ -90,9 +87,11 @@ const getCustomInput = function (e) {
         display()
         removeCustomError(e)
     }
-    
+    removeActive()
     
 }
+
+
 tip.addEventListener('input', getCustomInput)
 
 tipButton.forEach(tipButton => {
@@ -112,40 +111,57 @@ function removeActive() {
 }
 const display = () => {
     const billInput = bill.value;
+
     const totalPeople = totalPersons.value;
+
      const totalTip = billInput * (tipy /100)
+
      const amount =  (billInput * ((tipy/100) +1))
+
     tipAmount.textContent = 
     `$${totalTip.toFixed(2)}`
+
     totalAmount.textContent =
     `$${amount.toFixed(2)}`;
+
     if (totalPeople > 1) {
         totalAmount.textContent = 
         `$${(amount / totalPeople).toFixed(2)}`
         tipAmount.textContent = 
         `$${(totalTip / totalPeople).toFixed(2)}`
-    } 
-    Error()
+    } else {
+        Error()
+    }
     
-    
-    
+  
 }
+
+
 reset.addEventListener('click', (e) => {
-    tipAmount.textContent = `$0.00`;
-    totalAmount.textContent = `$0.00`;
+    tipAmount.textContent = `$0.00`
+
+    totalAmount.textContent = `$0.00`
+    
     inputS.forEach((e) => {
         e.value = ''
     })
+
     tipButton.forEach(tipButton => {
         tipButton.classList.remove('active')
     })
-    tipy = 0;
-    tip.value = '';
-    removeError(e);
+
+    tipy = 0
+
+    tip.value = ''
+
+    removeError(e)
+
     inputS.forEach(input => {
         input.style.border = 'none'
     })
+
     tip.style.border = 'none'
+
     removeCustomError(e)
     
 })
