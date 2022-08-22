@@ -9,25 +9,31 @@ const inputS = document.querySelectorAll('.inputs_')
  const customs = document.querySelector('customs')
 const reset = document.querySelector('.reset')
 var tipy = 0;
+
+
 const displayError = function(e, msg) {
     e.target.classList.add('error')
   e.target.previousElementSibling.lastElementChild.textContent = msg;
+  e.target.style.border = '1px solid rgb(245, 90, 90)'
 }
-// // const customError = function (e, msg) {
-// //     e.target.classList.add('error')
-// // //   e.target.parentNode.firstChild.lastChild.textContent = msg;
-// // // e.target.parentElement.previousSibling.textContent = msg; 
-// // }
-// // const removeCustomError = function (e) {
-// //     e.target.classList.remove('error')
-// //   e.target.parentElement.previousSibling.textContent ; 
-// //   errors.forEach(err => {
-// //     err.textContent = ''
-// // })   
-// }
+const customError = function (e, msg) {
+    e.target.classList.add('error')
+    // e.target.previousElementSibling.lastElementChild.textContent = msg;
+    e.target.parentElement.previousSibling.textContent = msg;
+    e.target.style.border = '1px solid rgb(245, 90, 90)';
+}
+const removeCustomError = function (e) {
+    e.target.classList.remove('error')
+    e.target.parentElement.previousSibling.textContent = '';
+    e.target.style.border = 'none';
+  errors.forEach(err => {
+    err.textContent = ''
+})   
+}
 const removeError = function (e) {
     e.target.classList.remove('error')
     e.target.previousElementSibling.lastElementChild.textContent = '';
+    e.target.style.border = 'none';
     errors.forEach(err => {
         err.textContent = ''
     }) 
@@ -79,21 +85,21 @@ function Error() {
 const getCustomInput = function (e) {
     const value = e.target.value
     if (value === '0') {
-        displayError(e, "Can't be zero")
+        customError(e, "Can't be zero")
     }
     else if (isNaN(value)) {
-        displayError(e, 'invalid')
+        customError(e, 'invalid')
     }
     else if (value < 0) {
-        displayError(e, 'positive only')
+        customError(e, 'positive only')
     }
     else if (value.includes('.') && e.target.name === 'total_persons') {
-        displayError(e, 'error')
+        customError(e, 'error')
     }
     else {
         tipy = value;
         display()
-        removeError(e)
+        removeCustomError(e)
     }
     
     
@@ -145,8 +151,11 @@ reset.addEventListener('click', (e) => {
         tipButton.classList.remove('active')
     })
     tipy = 0;
-    tip.value = ''
-    removeError(e)
+    tip.value = '';
+    removeError(e);
+    inputS.forEach(input => {
+        input.style.border = 'none'
+    })
     // removeCustomError(e)
     // errors.textContent = '';
 })
