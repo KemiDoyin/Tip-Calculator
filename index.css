@@ -55,6 +55,10 @@ input {
 input::placeholder {
     color: var(--Very-dark-cyan);
 }
+input .error {
+    border: 2px solid red;
+
+}
 label {
     color: var(--Dark-grayish-cyan);
 }
@@ -159,28 +163,29 @@ h2 {
 }
 .error {
     color: rgb(245, 90, 90);
-    /* text-align: end; */
-    /* display: block;
+     /* display: block;
     position: relative;
     top: -67px; */
     
 }
-.error:nth-of-type(2) {
+/* .error:nth-of-type(2) {
     top: -10px;
-}
+} */
 .calc_label {
     display: flex;
     justify-content: space-between;
 }
 
-input:focus {
+input:focus  {
     border: 2px solid var(--Strong-cyan);
     outline: none;
     
 }
-input:invalid{
-    border: 2px solid rgb(245, 90, 90);
+input:invalid {
+    border: 2px solid red;
+    outline: none;
 }
+
 
 .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
