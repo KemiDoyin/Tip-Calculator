@@ -1,14 +1,18 @@
-const bill = document.getElementById('bill');
-const tip = document.getElementById('tip');
-const totalPersons = document.getElementById('total_persons');
-const tipAmount = document.querySelector('.tip_amount');
-const totalAmount = document.querySelector('.total_amount');
-const tipButton = document.querySelectorAll('.tip_button');
+const bill = document.getElementById('bill')
+const tip = document.getElementById('tip')
+const totalPersons = document.getElementById('total_persons')
+const tipAmount = document.querySelector('.tip_amount')
+const totalAmount = document.querySelector('.total_amount')
+const tipButton = document.querySelectorAll('.tip_button')
 const errors = document.querySelectorAll('.error')
 const inputS = document.querySelectorAll('.inputs_')
  const customs = document.querySelector('customs')
 const reset = document.querySelector('.reset')
-let tipy = 0;
+
+
+
+
+let tipData = 0;
 
 
 const displayError = function(e, msg) {
@@ -16,14 +20,8 @@ const displayError = function(e, msg) {
   e.target.previousElementSibling.lastElementChild.textContent = msg;
   e.target.style.border = '1px solid rgb(245, 90, 90)'
 }
-const customError = function (e) {
-    e.target.style.color = 'rgb(245, 90, 90)'
-    e.target.style.border = '1px solid rgb(245, 90, 90)';
-}
-const removeCustomError = function (e) {
-    e.target.style.color = 'var(--Very-dark-cyan)'
-    e.target.style.border = 'none';
-}
+
+
 const removeError = function (e) {
     e.target.classList.remove('error')
     e.target.previousElementSibling.lastElementChild.textContent = '';
@@ -31,6 +29,23 @@ const removeError = function (e) {
     errors.forEach(err => {
         err.textContent = ''
     }) 
+}
+
+
+const customInputError = function (e) {
+    e.target.style.color = 'rgb(245, 90, 90)'
+    e.target.style.border = '1px solid rgb(245, 90, 90)';
+}
+
+
+const removeCustomInputError = function (e) {
+    e.target.style.color = 'var(--Very-dark-cyan)'
+    e.target.style.border = 'none';
+}
+
+
+function resetBtnActive() {
+    reset.style.opacity = '1'
 }
 
 inputS.forEach(inputs => {
@@ -51,9 +66,10 @@ inputS.forEach(inputs => {
         else {
             removeError(e)
         }
-        
-        display()
+        resetBtnActive()
+        displayInput()
     })
+    
 })
 
 function Error() {
@@ -74,18 +90,18 @@ function Error() {
 const getCustomInput = function (e) {
     const value = e.target.value
     if (value === '0') {
-        customError(e, "Can't be zero")
+        customInputError(e, "Can't be zero")
     }
     else if (isNaN(value)) {
-        customError(e, 'invalid')
+        customInputError(e, 'invalid')
     }
     else if (value < 0) {
-        customError(e, 'positive only')
+        customInputError(e, 'positive only')
     }
     else {
-        tipy = value;
-        display()
-        removeCustomError(e)
+        tipData = value;
+        displayInput()
+        removeCustomInputError(e)
     }
     removeActive()
     
@@ -99,8 +115,9 @@ tipButton.forEach(tipButton => {
         removeActive()
         e.target.classList.add('active')
         tip.value = ''
-        tipy = e.target.value
-        display()
+        tipData = e.target.value
+        displayInput()
+        resetActive()
     })
 })
 
@@ -109,26 +126,25 @@ function removeActive() {
         tipButton.classList.remove('active')
     })
 }
-const display = () => {
+
+
+const displayInput = () => {
     const billInput = bill.value;
 
     const totalPeople = totalPersons.value;
 
-     const totalTip = billInput * (tipy /100)
+     const totalTip = billInput * (tipData /100)
 
-     const amount =  (billInput * ((tipy/100) +1))
+     const amount =  (billInput * ((tipData/100) +1))
 
-    tipAmount.textContent = 
-    `$${totalTip.toFixed(2)}`
+    tipAmount.textContent =  `$${totalTip.toFixed(2)}`
 
-    totalAmount.textContent =
-    `$${amount.toFixed(2)}`;
+    totalAmount.textContent = `$${amount.toFixed(2)}`;
 
     if (totalPeople > 1) {
-        totalAmount.textContent = 
-        `$${(amount / totalPeople).toFixed(2)}`
-        tipAmount.textContent = 
-        `$${(totalTip / totalPeople).toFixed(2)}`
+        totalAmount.textContent = `$${(amount / totalPeople).toFixed(2)}`
+
+        tipAmount.textContent = `$${(totalTip / totalPeople).toFixed(2)}`
     } else {
         Error()
     }
@@ -150,7 +166,7 @@ reset.addEventListener('click', (e) => {
         tipButton.classList.remove('active')
     })
 
-    tipy = 0
+    tipData = 0
 
     tip.value = ''
 
@@ -162,7 +178,7 @@ reset.addEventListener('click', (e) => {
 
     tip.style.border = 'none'
 
-    removeCustomError(e)
+    removeCustomInputError(e)
     
 })
 
