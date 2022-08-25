@@ -14,7 +14,6 @@ const reset = document.querySelector('.reset')
 
 let tipData = 0;
 
-
 const displayError = function(e, msg) {
     e.target.classList.add('error')
   e.target.previousElementSibling.lastElementChild.textContent = msg;
@@ -76,11 +75,11 @@ function Error() {
     const notValue = totalPersons.value
     const notValue2 = bill.value
     if(notValue.includes('.') || isNaN(notValue)) {
-        totalAmount.textContent = `$0.00`;
+        totalAmount.textContent = `$0.00`
         tipAmount.textContent = `$0.00`
     }
     else if (isNaN(notValue2)) {
-        totalAmount.textContent = `$0.00`;
+        totalAmount.textContent = `$0.00`
         tipAmount.textContent = `$0.00`
     }
 }
@@ -117,7 +116,7 @@ tipButton.forEach(tipButton => {
         tip.value = ''
         tipData = e.target.value
         displayInput()
-        resetActive()
+        resetBtnActive()
     })
 })
 
@@ -129,9 +128,9 @@ function removeActive() {
 
 
 const displayInput = () => {
-    const billInput = bill.value;
+    const billInput = bill.value
 
-    const totalPeople = totalPersons.value;
+    const totalPeople = totalPersons.value
 
      const totalTip = billInput * (tipData /100)
 
@@ -139,7 +138,7 @@ const displayInput = () => {
 
     tipAmount.textContent =  `$${totalTip.toFixed(2)}`
 
-    totalAmount.textContent = `$${amount.toFixed(2)}`;
+    totalAmount.textContent = `$${amount.toFixed(2)}`
 
     if (totalPeople > 1) {
         totalAmount.textContent = `$${(amount / totalPeople).toFixed(2)}`
@@ -155,8 +154,6 @@ const displayInput = () => {
 
 reset.addEventListener('click', (e) => {
     tipAmount.textContent = `$0.00`
-
-    totalAmount.textContent = `$0.00`
     
     inputS.forEach((e) => {
         e.value = ''
@@ -179,6 +176,7 @@ reset.addEventListener('click', (e) => {
     tip.style.border = 'none'
 
     removeCustomInputError(e)
+    totalAmount.textContent = `$0.00`
     
 })
 
